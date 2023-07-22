@@ -1,8 +1,8 @@
 import { NextFunction, Response, Request } from "express"
 import { Repository } from "typeorm";
-import { User } from "../../entities";
 import { AppError } from "../../errors";
 import { AppDataSource } from "../../data-source";
+import User from "../../entities/users.entity";
 
 export const ensureEmailIsNotInUse = async (req:Request, res:Response, next:NextFunction) :Promise<Response | void> =>{
 

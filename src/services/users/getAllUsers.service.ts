@@ -1,8 +1,8 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { User } from "../../entities";
 import { TUser } from "../../interfaces/users.interfaces";
 import { userSchema } from "../../schemas/users.schemas";
+import User from "../../entities/users.entity";
 
 export const getAllUsersService = async (): Promise<TUser[]> => {
 

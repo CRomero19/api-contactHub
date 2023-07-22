@@ -1,6 +1,5 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-
 import { AppError } from "../../errors";
 import User from "../../entities/users.entity";
 
