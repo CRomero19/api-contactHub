@@ -5,31 +5,31 @@ import { getRounds, hashSync } from "bcryptjs";
 @Entity('users')
 class User {
     @PrimaryGeneratedColumn('increment')
-    id:number 
+    id: number 
 
     @Column({type:'varchar', length:45 })
-    name:string
+    name: string
 
     @Column({type:'varchar', length:45, unique:true})
-    email:string
+    email: string
 
     @Column({type:'boolean',default:false})
-    admin:boolean
+    admin: boolean
 
     @Column({type:'varchar', length:120})
-    password:string
+    password: string
 
     @Column({type:'varchar', length:15 })
-    telefone:string
+    telefone: string
 
     @CreateDateColumn({type:'date'})
-    createdAt: string
+    createdAt: string | Date
 
     @UpdateDateColumn({type:'date'})
-    updatedAt:string
+    updatedAt: string | Date
 
-    @DeleteDateColumn({type:'date'})
-    deletedAt:string
+    @DeleteDateColumn({type:'date', nullable:true})
+    deletedAt?: string | Date
 
     @OneToMany(() => Contact, (contact:Contact) => contact.user)
     contacts: Contact[];

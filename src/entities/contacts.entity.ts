@@ -1,5 +1,4 @@
-
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import User from './users.entity';
 
 @Entity('contacts')
@@ -17,13 +16,10 @@ class Contact {
     telefone:string
 
     @CreateDateColumn({type:'date'})
-    createdAt: string
+    createdAt: string | Date
 
     @UpdateDateColumn({type:'date'})
-    updatedAt:string
-
-    @DeleteDateColumn({type:'date'})
-    deletedAt:string
+    updatedAt:string | Date
 
     @ManyToOne(() => User, user => user.contacts)
     @JoinColumn()

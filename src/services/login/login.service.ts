@@ -11,7 +11,7 @@ export const loginService = async (userData:TLoginRequest): Promise<TLoginRespon
 
     const userRepository:Repository<User> = AppDataSource.getRepository(User);
     const user:User | null = await userRepository.findOneBy({ email: userData.email } );
-
+    
     const comparePassword = await bcrypt.compare(
         userData.password, 
         user!.password
@@ -32,5 +32,5 @@ export const loginService = async (userData:TLoginRequest): Promise<TLoginRespon
         }
     )
 
-    return { token };
+    return { token, userId: user!.id };
 };

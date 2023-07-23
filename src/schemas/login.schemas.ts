@@ -5,4 +5,7 @@ export const loginSchema = z.object({
     password: z.string().max(120)
 })
 
-export const responseLoginSchema = z.object({token:z.string()});
+export const responseLoginSchema = z.object({
+    token:z.string(),
+    userId:z.number()
+});

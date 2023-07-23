@@ -17,6 +17,7 @@ export const userSchemaRequest = z.object({
     email: z.string().max(45).email(),
     password: z.string().max(120),
     admin: z.boolean().default(false),
+    telefone: z.string().max(15)
 });
 
 export const updateUserRequestSchema = userSchemaRequest.omit({ id:true, admin:true }).partial();
