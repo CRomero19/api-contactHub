@@ -5,3 +5,5 @@ export const contactsSchema = z.object({
     email: z.string().max(45),
     telefone: z.string().max(15)
 })
+
+export const updateContactSchema = contactsSchema.partial();

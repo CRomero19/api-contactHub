@@ -6,10 +6,10 @@ class Contact {
     @PrimaryGeneratedColumn('increment')
     id:number 
 
-    @Column({type:'varchar', length:45 })
+    @Column({type:'varchar', length:45 , unique:true})
     name:string
 
-    @Column({type:'varchar', length:45, unique:true})
+    @Column({type:'varchar', length:45})
     email:string
 
     @Column({type:'varchar', length:15 })
