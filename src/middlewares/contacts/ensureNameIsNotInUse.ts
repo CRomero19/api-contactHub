@@ -5,7 +5,7 @@ import { AppDataSource } from "../../data-source";
 import Contact from "../../entities/contacts.entity";
 
 export const ensureNameIsNotInUse = async (req:Request, res:Response, next:NextFunction) :Promise<Response | void> =>{
-
+    const userId = Number(res.locals.id)
     const newUserName  = req.body.name;
     
     if(newUserName){

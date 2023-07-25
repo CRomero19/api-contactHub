@@ -7,4 +7,4 @@ import { ensureUserIsActive } from '../middlewares/login/ensureUserIsActive'
 
 export const loginRoute: Router = Router()
 
-loginRoute.post('', ensureRequestDataIsValid(loginSchema),ensureUserIsRegisteredForLogin,ensureUserIsActive, loginController)
+loginRoute.post('', ensureRequestDataIsValid(loginSchema),ensureUserIsRegisteredForLogin, ensureUserIsActive, loginController)

@@ -6,14 +6,13 @@ import { ensureEmailIsNotInUse } from '../middlewares/users/ensureEmailIsNotInUs
 import { ensureTokenIsValid } from '../middlewares/ensureTokenIsValid'
 import { ensureUserIsAdm } from '../middlewares/ensureUserIsAdm'
 import { ensureUserIsAllowed } from '../middlewares/users/ensureUserIsAllowed'
-
-
+import { ensureUserIsRegistered } from '../middlewares/users/ensureUserIsRegisteredForRouteUsers'
 
 export const usersRoutes: Router = Router()
 
 usersRoutes.post('', ensureRequestDataIsValid(userSchemaRequest),ensureEmailIsNotInUse,registerNewUserController)
-usersRoutes.get('', ensureTokenIsValid, getAllUsersController) /* ensureUserIsAdm, */
-usersRoutes.get('/:id', ensureTokenIsValid, ensureUserIsAllowed, getUserByIdController)
-usersRoutes.patch('/:id', ensureTokenIsValid, ensureUserIsAllowed, ensureRequestDataIsValid(updateUserRequestSchema),updateUserController)
-usersRoutes.delete('/:id', ensureTokenIsValid, ensureUserIsAllowed, deleteUserController) 
-usersRoutes.get('/:id/contacts',getAllUserContactsController) 
+usersRoutes.get('', ensureTokenIsValid, ensureUserIsAdm,getAllUsersController) 
+usersRoutes.get('/:id', ensureTokenIsValid, ensureUserIsRegistered,ensureUserIsAllowed, getUserByIdController)
+usersRoutes.patch('/:id', ensureTokenIsValid, ensureUserIsRegistered,ensureUserIsAllowed, ensureRequestDataIsValid(updateUserRequestSchema),updateUserController)
+usersRoutes.delete('/:id', ensureTokenIsValid, ensureUserIsRegistered,ensureUserIsAllowed, deleteUserController) 
+usersRoutes.get('/:id/contacts',ensureTokenIsValid, ensureUserIsRegistered,ensureUserIsAllowed,getAllUserContactsController) 

@@ -15,9 +15,19 @@ export const updateContactService = async (contactId:number,contactData:TUserReq
         throw new AppError('Contact not found',404)
     }
 
-    await contactRepository.save({id:contactId, ...contactData});
+    if (contactData.name !== undefined && contactData.name.trim() !== '') {
+        contact.name = contactData.name;
+    }
+    if (contactData.email !== undefined && contactData.email.trim() !== '') {
+        contact.email = contactData.email;
+    }
+    if (contactData.telefone !== undefined && contactData.telefone.trim() !== '') {
+        contact.telefone = contactData.telefone;
+    }
 
-    const updatedContactInfo:Contact[] = await contactRepository.find({where: {id:contactId}});
+    await contactRepository.save(contact);
+
+    const updatedContactInfo: Contact[] = await contactRepository.find({ where: { id: contactId } });
 
     return updatedContactInfo;
-}
+};

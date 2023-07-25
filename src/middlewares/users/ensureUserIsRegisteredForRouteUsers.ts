@@ -4,7 +4,7 @@ import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
 import User from "../../entities/users.entity";
 
-export const ensureUserIsRegisteredForUsersRoute = async (req:Request, res:Response, next:NextFunction) :Promise<Response | void> =>{
+export const ensureUserIsRegistered = async (req:Request, res:Response, next:NextFunction) :Promise<Response | void> =>{
 
     const userRepository:Repository<User> = AppDataSource.getRepository(User)
 
